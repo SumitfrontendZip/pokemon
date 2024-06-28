@@ -1,6 +1,5 @@
 import './Pokemon.css'
 function Pokemon({ name, image, types }) {
-    console.log(types);
     return (
         <div className='pokemon-wrapper'>
             <img src={image} alt="" />

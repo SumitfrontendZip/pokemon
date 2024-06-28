@@ -1,7 +1,30 @@
-.pokemon-list-wrapper{
+.pokemon-list-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     width: 100vw;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+.buttons>button {
+    margin: 0 10px;
+    padding: 10px 40px;
+    cursor: pointer;
+    border: none;
+    background: rgb(241, 95, 95);
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+button[disabled] {
+    background-color: #cccccc;
+    color: #666666;
 }

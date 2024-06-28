@@ -3,16 +3,19 @@ import axios from "axios"
 import Pokemon from "../Pokemon/Pokemon"
 import './PokemonList.css'
 function PokemonList() {
-
     const [pokemonList, setPokemonList] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const [nextURL, setNextURL] = useState('')
+    const [prevURL, setPrevURL] = useState('')
+    const [pokedexURL, setPokedexURL] = useState('https://pokeapi.co/api/v2/pokemon')
 
     const downloadPokemon = async () => {
-        const response = await axios.get('https://pokeapi.co/api/v2/pokemon');
+        const response = await axios.get(pokedexURL);
         const pokemonResults = response.data.results
+        setPrevURL(() => response.data.previous)
+        setNextURL(() => response.data.next)
         const pokemonResultPromise = pokemonResults.map((pokemon) => axios.get(pokemon.url))
         const pokemonData = await axios.all(pokemonResultPromise)
-        console.log(pokemonData);
         setPokemonList(pokemonData.map((pokeData) => {
             const pokemon = pokeData.data;
             return {
@@ -27,16 +30,24 @@ function PokemonList() {
 
     useEffect(() => {
         downloadPokemon()
-    }, [])
+    }, [pokedexURL])
 
     return (
-        <div className="pokemon-list-wrapper">
-            {
-                pokemonList.map((pokemon) =>
-                    <Pokemon name={pokemon.name} key={pokemon.id} image={pokemon.image} types={pokemon.types}/>
-                )
-            }
-        </div>
+
+        <>
+
+            <div className="pokemon-list-wrapper">
+                {
+                    isLoading ? pokemonList.map((pokemon) =>
+                        <Pokemon name={pokemon.name} key={pokemon.id} image={pokemon.image} types={pokemon.types} />
+                    ) : <div className="loader"></div>
+                }
+            </div>
+            <div className="buttons">
+                <button disabled={prevURL === null} onClick={() => setPokedexURL(prevURL)}>Prev</button>
+                <button disabled={nextURL === null} onClick={() => setPokedexURL(nextURL)}>Next</button>
+            </div>
+        </>
     )
 }
 
