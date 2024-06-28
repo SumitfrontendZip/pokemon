@@ -1,0 +1,21 @@
+.pokemon-wrapper > img{
+    width: 200px ;
+    height: 200px;
+}
+.pokemon-name-heading{
+    letter-spacing: 4px;
+    margin-top: 40px;
+    text-transform: capitalize;
+}
+.pokemon-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+    cursor: pointer;
+}
+.pokemon-types{
+    text-transform: capitalize;
+    margin-top: 10px;
+}
