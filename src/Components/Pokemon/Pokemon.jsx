@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import './Pokemon.css'
 function Pokemon({ name, image, types, id }) {
+    console.log(types);
     return (
         <Link to={`/${name}/${id}`}>
             <div className='pokemon-wrapper'>
@@ -8,7 +9,7 @@ function Pokemon({ name, image, types, id }) {
                 <div className='pokemon-name-heading'>{name}</div>
                 <div className="pokemon-types">
                     {
-                        types.map((type, idx) => <li key={idx}>{type.type.name}</li>)
+                        types.map((type, idx) => <li key={idx}>{type}</li>)
                     }
                 </div>
             </div>
