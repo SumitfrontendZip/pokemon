@@ -1,0 +1,23 @@
+.pokemonDetails-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.pokemonDetails-wrapper > img {
+    margin: 10px 0px;
+    width: 200px;
+    height: 200px;
+}
+.pokemonDetails-wrapper > h2{
+    letter-spacing: 5px;
+    text-transform: capitalize;
+    margin: 10px 0px;
+}
+.pokemonDetails-wrapper > span{
+    letter-spacing: 2px;
+    margin: 5px 0px;
+}
+li{
+    text-transform: capitalize;
+}
