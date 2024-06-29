@@ -11,7 +11,6 @@ function App() {
       path: '/',
       element: (
         <>
-          <Pokedex />
           <PokemonList />
         </>
       )
@@ -19,13 +18,14 @@ function App() {
       path: '/:pokemon/:id',
       element: (
         <>
-            <PokemonDetails/>
+          <PokemonDetails />
         </>
       )
     }
   ])
   return (
     <>
+      <Pokedex />
       <RouterProvider router={router} />
     </>
   )
